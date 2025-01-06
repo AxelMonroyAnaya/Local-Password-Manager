@@ -6,8 +6,6 @@ alfa = string.ascii_letters
 numbers = string.digits
 code = string.hexdigits
 
-print(alfa,numbers, code)
-
 def creacion():
     contra = str()
     for i in range(0, 8):
@@ -52,7 +50,6 @@ cursor.execute("""
 conexion.commit()
 
 def insertar(usuario,contra, plataforma= "",correo=""):
-    print(usuario,len(contra),plataforma,len(correo))
     sleep(5)
     if contra:
         cursor.execute("""
