@@ -6,6 +6,18 @@ alfa = string.ascii_letters
 numbers = string.digits
 code = string.hexdigits
 
+def ver():
+    """
+
+    :return:
+    """
+    cursor.execute("""
+        SELECT * FROM CREDENCIALES;
+    """)
+    res = cursor.fetchall()
+    conexion.commit()
+    return res
+
 def creacion():
     contra = str()
     for i in range(0, 8):
@@ -63,8 +75,17 @@ def insertar(usuario,contra, plataforma= "",correo=""):
 sleep(5)
 system("cls")
 print("*"*5,"menu principal","*"*5)
-opc= int(input("\n selecciona una opcion\n1._ Generar contraseña\n 2.- ver contrasenas "))
-if opc == 1:
-    creacion()
-else:
-    pass
+menu = 8
+while menu ==  8 :
+    opc= int(input("\n selecciona una opcion\n1._ Generar contraseña\n2.- ver contrasenas \n3.- eliminar contrasenas \n4.-modificar contrasenas"))
+    if opc == 1:
+        creacion()
+    if opc == 2:
+        res = ver()
+        for i in res :
+            print(f"\n\n| plataforma : {i[3]} |  password : {i[4]} |\n")
+    if opc == 5:
+
+        break
+    else:
+        pass
